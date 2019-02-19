@@ -12,7 +12,7 @@ struct TessellationControlPoint
 	float3	posWS					: TEXCOORD1;	// world position of the vertices
     float4   color                   : TEXCOORD2;    // vertex color
 	//float2	preWaveSP 				: TEXCOORD2;	// screen position of the verticies before wave distortion
-    UNITY_VERTEX_INPUT_INSTANCE_ID
+    //UNITY_VERTEX_INPUT_INSTANCE_ID
 };
 
 struct HS_ConstantOutput

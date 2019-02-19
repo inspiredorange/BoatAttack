@@ -1,7 +1,9 @@
 ﻿using System;
 using Unity.Mathematics;
 using UnityEngine.Rendering;
+using UnityEngine.Experimental.Rendering;
 using WaterSystem;
+using UnityEngine.Experimental.Rendering.LightweightPipeline;
 
 namespace UnityEngine.Rendering.LWRP
 {
@@ -247,9 +249,9 @@ namespace UnityEngine.Rendering.LWRP
             QualitySettings.lodBias = bias * 0.5f;
             
             UpdateReflectionCamera(camera);
+            CullResults cullResults = new CullResults();
+            LightweightRenderPipeline.RenderSingleCamera(pipelineInstance, context, m_ReflectionCamera, ref cullResults);
 
-            LightweightRenderPipeline.RenderSingleCamera(pipelineInstance, context, m_ReflectionCamera);
-            
             GL.invertCulling = false;
             RenderSettings.fog = true;
             QualitySettings.maximumLODLevel = max;

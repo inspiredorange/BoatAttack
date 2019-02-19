@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.Profiling;
 using UnityEngine.Rendering;
 using WaterSystem.Data;
@@ -23,8 +24,8 @@ namespace WaterSystem
             }
         }
 
-        private bool useComputeBuffer;
-        public bool computeOverride;
+        private bool useComputeBuffer = true;
+        public bool computeOverride = true;
 
         private RenderTexture _depthTex;
         private Camera _depthCam;
@@ -53,12 +54,21 @@ namespace WaterSystem
             else
                 useComputeBuffer = false;
             Init();
-            RenderPipelineManager.beginCameraRendering += BeginCameraRendering;
+            RenderPipeline.beginCameraRendering += RenderPipeline_beginCameraRendering;
 
             if(resources == null)
             {
                 resources = Resources.Load("WaterResources") as WaterResources;
             }
+        }
+
+        private void RenderPipeline_beginCameraRendering(Camera obj)
+        {
+            Vector3 fwd = obj.transform.forward;
+            fwd.y = 0;
+            float roll = obj.transform.localEulerAngles.z;
+            Shader.SetGlobalFloat("_CameraRoll", roll);
+            Shader.SetGlobalMatrix("_InvViewProjection", (GL.GetGPUProjectionMatrix(obj.projectionMatrix, false) * obj.worldToCameraMatrix).inverse);
         }
 
         private void OnDisable() {
@@ -69,7 +79,7 @@ namespace WaterSystem
         {
             if(Application.isPlaying)
                 GerstnerWavesJobs.Cleanup();
-            RenderPipelineManager.beginCameraRendering -= BeginCameraRendering;
+            RenderPipeline.beginCameraRendering -= BeginCameraRendering;
             if (_depthCam)
             {
                 _depthCam.targetTexture = null;
