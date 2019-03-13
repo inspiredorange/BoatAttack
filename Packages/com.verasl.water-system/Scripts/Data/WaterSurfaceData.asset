@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17284ebf5e80436eb6089f8c7459dab, type: 3}
   m_Name: WaterSurfaceData
   m_EditorClassIdentifier: 
-  _waterMaxVisibility: 3
+  _waterMaxVisibility: 4.5
   _absorptionRamp:
     serializedVersion: 2
     key0: {r: 0.9339623, g: 0.91146284, b: 0.876691, a: 1}
@@ -86,13 +86,13 @@ MonoBehaviour:
       x: 0
       y: 0
     onmiDir: 0
-  - amplitude: 0.5
-    direction: 6.532788
+  - amplitude: 8.02
+    direction: 92
     wavelength: 7.455916
     origin:
       x: -63.14
       y: 931.6
-    onmiDir: 1
+    onmiDir: 0
   - amplitude: 0.7
     direction: 4.051435
     wavelength: 4.6626315
@@ -117,41 +117,41 @@ MonoBehaviour:
   _customWaves: 0
   randomSeed: 18909
   _basicWaveSettings:
-    numWaves: 6
-    amplitude: 5
+    numWaves: 5
+    amplitude: 2.5
     direction: 73.69
-    wavelength: 5
+    wavelength: 4
   _foamSettings:
     foamType: 1
     basicFoam:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.3416667
-        value: 0
-        inSlope: 0.08057719
-        outSlope: 0.08057719
+        time: 0
+        value: 0.0070996583
+        inSlope: 1.2797014
+        outSlope: 1.2797014
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 1
+        outWeight: 0.19166666
       - serializedVersion: 3
-        time: 0.9288946
-        value: 0.11867075
-        inSlope: 0.75917286
-        outSlope: 0.75917286
+        time: 0.5850289
+        value: 0.033726543
+        inSlope: -0.8028425
+        outSlope: -0.8028425
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.62219536
-        outWeight: 0.56714123
+        inWeight: 0.046850964
+        outWeight: 0.25442177
       - serializedVersion: 3
         time: 1
-        value: 0.29954997
-        inSlope: -0.14464083
-        outSlope: -0.14464083
+        value: 0.2782739
+        inSlope: 0.2993047
+        outSlope: 0.2993047
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.613694
+        inWeight: 0.12821181
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
